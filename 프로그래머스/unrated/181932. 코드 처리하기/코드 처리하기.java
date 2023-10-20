@@ -6,8 +6,8 @@ class Solution {
         int mode = 0;
         String ret = "";
         while (idx < code.length()) {
-                if (code.charAt(idx) == '1') {
-                mode = (mode + 1) % 2;
+            if (code.charAt(idx) == '1') {
+                mode = mode == 1 ? 0 : 1;
             } else {
                 if (mode == 0) {
                     if (idx % 2 == 0) {

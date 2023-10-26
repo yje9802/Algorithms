@@ -1,10 +1,10 @@
 # [level unrated] 구슬을 나누는 경우의 수 - 120840 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120840?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120840?language=java) 
 
 ### 성능 요약
 
-메모리: 10.2 MB, 시간: 0.01 ms
+메모리: 75.2 MB, 시간: 1.69 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 10월 4일 21:26:35
+2023년 10월 4일 21:41:31
 
 ### 문제 설명
 

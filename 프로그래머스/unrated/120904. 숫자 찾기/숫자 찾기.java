@@ -2,15 +2,9 @@ class Solution {
     public int solution(int num, int k) {
         int answer = -1;
         String s_num = "" + num;
-        String[] ss_num = s_num.split("");
+        answer = s_num.indexOf(String.valueOf(k));
         
-        for (int i = 0; i < ss_num.length; i++) {
-            if (Integer.parseInt(ss_num[i]) == k) {
-                answer = i + 1;
-                break;
-            }
-        }
-        
+        answer = answer >= 0 ? answer + 1 : -1;
         return answer;
     }
 }

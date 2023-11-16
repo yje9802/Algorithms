@@ -1,10 +1,10 @@
 # [level unrated] 뒤에서 5등 위로 - 181852 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181852?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181852) 
 
 ### 성능 요약
 
-메모리: 72 MB, 시간: 0.34 ms
+메모리: 75.1 MB, 시간: 0.33 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 11월 4일 21:30:50
+2023년 11월 4일 21:33:23
 
 ### 문제 설명
 

@@ -5,8 +5,8 @@ class Solution {
         String answer = "";
         BigInteger n_a = new BigInteger(a);
         BigInteger n_b = new BigInteger(b);
-        BigInteger sum = n_a.add(n_b);
-        answer = sum.toString();
+
+        answer += n_a.add(n_b);
         return answer;
     }
 }

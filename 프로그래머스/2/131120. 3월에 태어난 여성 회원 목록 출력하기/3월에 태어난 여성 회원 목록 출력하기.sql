@@ -1,0 +1,6 @@
+-- 코드를 입력하세요
+SELECT m.MEMBER_ID, m.MEMBER_NAME, m.GENDER, DATE_FORMAT(m.DATE_OF_BIRTH, '%Y-%m-%d') AS DATE_OF_BIRTH
+FROM MEMBER_PROFILE m
+WHERE m.GENDER = 'W' and m.TLNO is not null
+        and DATE_FORMAT(m.DATE_OF_BIRTH, '%Y%m%d') LIKE '____03__'
+;

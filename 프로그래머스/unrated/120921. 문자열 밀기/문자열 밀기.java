@@ -14,7 +14,7 @@ class Solution {
                 return answer;
             }
         }
-
+        // answer = (B+B).indexOf(A);
         return answer;
     }
 }

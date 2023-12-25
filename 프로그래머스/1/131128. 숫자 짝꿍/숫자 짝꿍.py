@@ -11,10 +11,7 @@ def solution(X, Y):
     
     for k in range(0, 10):
         if list_x[k] > 0 and list_y[k] > 0:
-            if list_x[k] == list_y[k]:
-                answer += str(k) * list_x[k]
-            else:
-                answer += str(k) * min(list_x[k], list_y[k])
+            answer += str(k) * min(list_x[k], list_y[k])
     
     if answer == "": return "-1"
     if answer.replace("0", "") == "": return "0"

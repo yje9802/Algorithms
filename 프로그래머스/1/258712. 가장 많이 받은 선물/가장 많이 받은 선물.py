@@ -7,11 +7,10 @@ def solution(friends, gifts):
     
     for gift in gifts:
         t, f = gift.split(' ') # t: 선물을 준 사람 f: 받은 사람
-        if t in gifted:
-            if f in gifted[t]:
-                gifted[t][f] += 1
-            else:
-                gifted[t][f] = 1
+        if f in gifted[t]:
+            gifted[t][f] += 1
+        else:
+            gifted[t][f] = 1
         # 선물 지수 계산
         gift_idx[t] += 1
         gift_idx[f] -= 1

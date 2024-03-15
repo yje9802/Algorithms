@@ -1,6 +1,7 @@
 def solution(n):
     answer = -1
     
-    if int(n**(1/2))**2 == (n**(1/2))**2:
-        answer = (int(n**(1/2)) + 1)**2
+    sqrt = n**(1/2)
+    if int(sqrt)**2 == (sqrt)**2:
+        answer = (int(sqrt) + 1)**2
     return answer

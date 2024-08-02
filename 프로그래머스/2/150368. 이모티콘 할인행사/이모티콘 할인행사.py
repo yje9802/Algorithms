@@ -7,7 +7,7 @@ def solution(users, emoticons):
     e_len = len(emoticons)
     
     percents = [40,30,20,10] # 할인율은 10%, 20%, 30%, 40% 중 하나로 설정됩니다.
-    discount_group = list(product(percents, repeat=e_len)) # 각 이모티콘별 가능한 모든 할인율 조합
+    discount_group = product(percents, repeat=e_len) # 각 이모티콘별 가능한 모든 할인율 조합
     
     # discount_group 모든 조합 돌기
     for comb in discount_group: # 4*e_len 만큼 반복

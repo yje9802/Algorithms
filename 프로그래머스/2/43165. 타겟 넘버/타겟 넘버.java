@@ -1,25 +1,19 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] numbers, int target) {
+        int answer = dfs(numbers, target, 0, 0);
+        return answer;
+    }
+    
+    int dfs(int[] numbers, int target, int curr, int idx) {
         int answer = 0;
         
-        Queue<int[]> queue = new LinkedList<>(); // [현재 합계, 인덱스]
-        queue.offer(new int[]{0, 0});
-        
-        while (!queue.isEmpty()) {
-            int[] curr = queue.poll();
-            int currTotal = curr[0];
-            int currIdx = curr[1];
-            
-            if (currIdx == numbers.length) {
-                if (currTotal == target) {
-                    answer++;
-                }
-            } else {
-                queue.offer(new int[]{currTotal + numbers[currIdx], currIdx + 1});
-                queue.offer(new int[]{currTotal - numbers[currIdx], currIdx + 1});
+        if (idx == numbers.length) {
+            if (curr == target) {
+                answer++;
             }
+        } else {
+            answer += dfs(numbers, target, curr + numbers[idx], idx+1);
+            answer += dfs(numbers, target, curr - numbers[idx], idx+1);
         }
         
         return answer;

@@ -9,7 +9,7 @@ def solution(scoville, K):
         first = heapq.heappop(scoville)
         if first >= K:
             break
-        if len(scoville) == 0 and first < K:
+        if len(scoville) == 0:
             answer = -1
             break
         second = heapq.heappop(scoville)

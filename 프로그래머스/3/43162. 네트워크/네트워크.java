@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     static boolean[] visited;
     
@@ -7,7 +9,7 @@ class Solution {
         
         for (int v = 0; v < n; v++) {
             if (!visited[v]) {
-                dfs(v, n, computers);
+                bfs(v, computers);
                 answer++;
             }
         }
@@ -15,12 +17,19 @@ class Solution {
         return answer;
     }
     
-    void dfs(int v, int n, int[][] computers) {
-        visited[v] = true;
+    void bfs(int start, int[][] computers) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start] = true;
         
-        for (int nodeN = 0; nodeN < n; nodeN++) {
-            if (!visited[nodeN] && computers[v][nodeN] == 1) {
-                dfs(nodeN, n, computers);
+        while(!queue.isEmpty()) {
+            int curr = queue.poll();
+            
+            for (int i = 0; i < computers.length; i++) {
+                if (computers[curr][i] == 1 && !visited[i]) {
+                    queue.add(i);
+                    visited[i] = true;
+                }
             }
         }
     }

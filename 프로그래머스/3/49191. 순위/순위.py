@@ -1,29 +1,29 @@
+from collections import defaultdict
+
 def solution(n, results):
     answer = 0
     
-    # 0은 승패모름, 1은 이김, -1은 짐
-    graph = [[0] * (n+1) for _ in range(n+1)]
+    win_graph = defaultdict(list) # 자신이 이긴 선수 리스트
+    lose_graph = defaultdict(list) # 자신에게 이긴 선수 리스트
     
     for winner, loser in results:
-        graph[winner][loser] = 1
-        graph[loser][winner] = -1
-        
-    for k in range(1, n+1): # 경유 노드
-        for i in range(1, n+1): # 출발 노드
-            for j in range(1, n+1): # 도착 노드
-                if graph[i][k] == 1 and graph[k][j] == 1: # i가 k를 이기고 k가 j를 이겼다면
-                    graph[i][j] = 1 # i가 j를 이김
-                    graph[j][i] = -1
-                elif graph[i][k] == -1 and graph[k][j] == -1:
-                    graph[i][j] = -1
-                    graph[j][i] = 1
+        win_graph[winner].append(loser)
+        lose_graph[loser].append(winner)
     
-    for i in range(1, n+1):
-        count = 0 # 승패를 확실하게 알 수 있는 경우의 개수
-        for j in range(1, n+1):
-            if graph[i][j] != 0:
-                count += 1
-        if count == n-1: # 자기 자신을 제외한 모든 선수와 승패를 낸 경우 -> 순위 확정 가능
-            answer += 1
+    def dfs(graph, start, visited): # start는 승패를 파악하고자 하는 선수
+        for player in graph[start]:
+            if player not in visited:
+                visited.add(player)
+                dfs(graph, player, visited)
+    
+    for player in range(1, n+1):
+        win_set = set()
+        lose_set = set()
         
+        dfs(win_graph, player, win_set) # player가 이긴 선수들
+        dfs(lose_graph, player, lose_set) # player가 진 선수들
+        
+        if len(win_set) + len(lose_set) == n - 1:
+            answer += 1
+    
     return answer

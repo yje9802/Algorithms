@@ -4,42 +4,47 @@ class Solution {
     public int solution(int n, int[][] results) {
         int answer = 0;
         
-        // 각 선수 간의 알려진 승패 기록
-        int[][] graph = new int[n+1][n+1]; // 0은 승패모름, 1은 이김, 0은 짐
+        // key가 이긴 선수 리스트
+        List<List<Integer>> winGraph = new ArrayList<>();
+        // key를 이긴 선수 리스트
+        List<List<Integer>> loseGraph = new ArrayList<>();
+        
+        // graphs 초기화
+        for (int i = 0; i < n+1; i++) {
+            winGraph.add(new ArrayList<>());
+            loseGraph.add(new ArrayList<>());
+        }
+        
         for (int[] result: results) {
             int win = result[0], lose = result[1];
-            graph[win][lose] = 1;
-            graph[lose][win] = -1;
+            winGraph.get(win).add(lose);
+            loseGraph.get(lose).add(win);
         }
         
-        for (int i = 1; i < n+1; i++) {
-            for (int j = 1; j < n+1; j++) {
-                if (graph[i][j] == 1) {
-                    for (int k = 1; k < n+1; k++) {
-                        if (graph[j][k] == 1) {
-                            graph[i][k] = 1;
-                            graph[k][i] = -1;
-                        } else if (graph[i][k] == -1) {
-                            graph[j][k] = -1;
-                            graph[k][j] = 1;
-                        }
-                    }
-                }
-            }
-        }
-        
-        for (int i = 1; i < n+1; i++) {
-            int count = 0;
-            for (int g: graph[i]) {
-                if (g != 0) {
-                    count++;
-                }
-            }
-            if (count == n-1) {
+        for (int p = 1; p < n+1; p++) {
+            Set<Integer> winVisited = new HashSet<>();
+            Set<Integer> loseVisited = new HashSet<>();
+            
+            int winCount = dfs(p, winGraph, winVisited);
+            int loseCount = dfs(p, loseGraph, loseVisited);
+            
+            // 승패를 모두 가려냄
+            if (winCount + loseCount == n-1) {
                 answer++;
             }
         }
         
         return answer;
+    }
+    
+    static int dfs(int start, List<List<Integer>> graph, Set<Integer> visited) {
+        int count = 0; // 이긴/진 선수 수
+        for (Integer player: graph.get(start)) {
+            if (!visited.contains(player)) {
+                visited.add(player);
+                count += 1 + dfs(player, graph, visited);
+            }
+        }
+        return count;
     }
 }

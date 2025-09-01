@@ -1,5 +1,3 @@
-import math
-
 def find_row_and_column(quotient, mod, n):
     if mod == 0:
         x = quotient-1
@@ -17,7 +15,6 @@ def find_row_and_column(quotient, mod, n):
 
 def solution(n, w, num):
     answer = 0
-    h = math.ceil(n / w) # 세로로 쌓이는 상자의 개수
     
     quotient = num // w # num의 몫
     mod = num % w # num의 나머지
@@ -26,13 +23,13 @@ def solution(n, w, num):
     last_x, last_y = find_row_and_column(n//w, n%w, w) # 마지막 상자의 행, 열
     if last_x % 2 == 0:
         if last_y < y:
-            answer = h - x - 1
+            answer = last_x - x
         else:
-            answer = h - x
+            answer = last_x - x + 1
     else:
         if last_y <= y:
-            answer = h - x
+            answer = last_x - x + 1
         else:
-            answer = h - x - 1
+            answer = last_x - x
     
     return answer

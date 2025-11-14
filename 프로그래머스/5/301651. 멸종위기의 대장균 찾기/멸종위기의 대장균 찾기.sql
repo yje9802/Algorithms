@@ -1,18 +1,25 @@
-with recursive tmp as (
-    select id, parent_id, 1 as generation
-    from ecoli_data
-    where parent_id is null
-    union all
-    select s.id, s.parent_id, tmp.generation + 1
-    from tmp join ecoli_data s
-    on tmp.id = s.parent_id
+WITH RECURSIVE GEN AS (
+    SELECT ID, PARENT_ID, 1 AS 'GENERATION'
+    FROM ECOLI_DATA
+    WHERE PARENT_ID IS NULL
+    
+    UNION ALL
+    
+    SELECT e.ID, e.PARENT_ID, g.GENERATION + 1 AS 'GENERATION'
+    FROM GEN g
+        JOIN ECOLI_DATA e
+        ON e.PARENT_ID = g.ID
 )
 
-select count(*) count, generation
-from tmp
-where id not in (
-    select distinct parent_id
-    from tmp
-    where parent_id is not null)
-group by generation
-order by 2
+SELECT COUNT(*) AS COUNT,
+    GENERATION
+FROM GEN g
+    LEFT JOIN (
+        SELECT DISTINCT PARENT_ID
+        FROM GEN
+    ) AS p
+    ON g.ID = p.PARENT_ID
+WHERE p.PARENT_ID IS NULL
+GROUP BY GENERATION
+ORDER BY GENERATION
+

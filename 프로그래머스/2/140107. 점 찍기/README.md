@@ -1,10 +1,10 @@
 # [level 2] 점 찍기 - 140107 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/140107?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/140107?language=java) 
 
 ### 성능 요약
 
-메모리: 9.26 MB, 시간: 602.01 ms
+메모리: 94.9 MB, 시간: 13.08 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 01월 15일 23:37:04
+2026년 01월 15일 23:51:16
 
 ### 문제 설명
 

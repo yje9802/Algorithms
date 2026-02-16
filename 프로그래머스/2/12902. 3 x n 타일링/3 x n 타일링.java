@@ -1,5 +1,5 @@
 class Solution {
-    long MOD = 1000000007;
+    static final long MOD = 1_000_000_007;
     
     public long solution(int n) {
         long answer = 0;

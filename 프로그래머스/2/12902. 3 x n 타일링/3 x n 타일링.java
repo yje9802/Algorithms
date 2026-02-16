@@ -9,12 +9,11 @@ class Solution {
         long[] dp = new long[n+1];
         dp[2] = 3; // 최소 단위
 
+        long extra = 0;
+        
         for (int i = 4; i < n+1; i+=2) {
-            dp[i] = dp[i-2] * 3 + 2;
-            
-            for (int j = i - 4; j > 0; j-=2) {
-                dp[i] += dp[j] * 2;
-            }
+            extra += dp[i-4];
+            dp[i] = dp[i-2] * 3 + extra * 2 + 2;
             dp[i] = dp[i] % MOD;
         }
         

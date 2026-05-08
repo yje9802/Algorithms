@@ -1,10 +1,10 @@
 # [level 2] 힌트 스테이지 - 468377 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/468377?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/468377?language=java) 
 
 ### 성능 요약
 
-메모리: 9.24 MB, 시간: 153.48 ms
+메모리: 75.9 MB, 시간: 6.06 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 05월 09일 02:08:24
+2026년 05월 09일 03:14:34
 
 ### 문제 설명
 

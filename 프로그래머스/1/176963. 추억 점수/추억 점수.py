@@ -8,9 +8,7 @@ def solution(name, yearning, photo):
     for ph in photo:
         total = 0
         for nm in ph:
-            if nm not in scores.keys():
-                continue
-            else:
+            if nm in scores.keys():
                 total += scores[nm]
         answer.append(total)
         

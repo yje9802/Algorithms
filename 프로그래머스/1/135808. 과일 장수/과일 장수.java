@@ -13,9 +13,11 @@ class Solution {
         }
         
         for (int i = 0; i < score.length; i = i + m) {
+            if (i + m > score.length) break;
             int[] apples = Arrays.copyOfRange(score, i, i+m);
             answer += Arrays.stream(apples).min().getAsInt() * m; // 사실 apples의 마지막 원소가 최솟값
         }
+        
         return answer;
     }
 }

@@ -2,27 +2,29 @@ import java.util.*;
 
 class Solution {
     public String solution(String number, int k) {
-        Deque<Character> stack = new ArrayDeque<>();
+        String answer = "";
         
-        for (char digit: number.toCharArray()) {
-            while (!stack.isEmpty() && k > 0 && stack.peekLast() < digit) {
-                stack.removeLast();
+        Deque<Character> stack = new LinkedList<>();
+        for (char num: number.toCharArray()) {
+            while (!stack.isEmpty() && k > 0 && stack.getLast() < num) {
+                stack.pollLast();
                 k--;
             }
-            stack.addLast(digit);
+            stack.offer(num);
         }
         
-        // 아직 k개 만큼 다 제거하지 못 했다면
-        while (k > 0) {
-            stack.removeLast();
+        // 아직 k만큼 숫자를 제거하지 못함
+        while (k > 0){
+            stack.pollLast();
             k--;
         }
         
-        StringBuilder answer = new StringBuilder();
-        for (char ch : stack) {
-            answer.append(ch);
+        StringBuilder sb = new StringBuilder();
+        for (char ch: stack) {
+            sb.append(ch);
         }
+        answer = sb.toString();
         
-        return answer.toString();
+        return answer;
     }
 }
